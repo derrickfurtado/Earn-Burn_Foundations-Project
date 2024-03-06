@@ -5,7 +5,7 @@ const sequelize = require('./database')             // pull in sequelize functio
 
 const seed = require('./seed')                      // pull in seed function 
 const app = express()
-const {registerUser} = require('./controller')      // pull in registerUser function from controller.js
+const {registerUser, loginUser} = require('./controller')      // pull in registerUser function from controller.js
 
 
 //=============================================================
@@ -19,7 +19,7 @@ app.use(cors())                                     // so we don't have issues r
 
 
 app.post('/api/register',registerUser)                           // start with endpoint for registering user/password and pass in registerUser function 
-
+app.post('/api/login',loginUser)
 
 
 

@@ -1,4 +1,4 @@
-console.log("JS connected")
+console.log("register.js connected")
 
 // need to select inputs, get values of inputs, and send .POST to endpoints server.js
 
