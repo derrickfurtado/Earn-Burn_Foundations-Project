@@ -1,30 +1,30 @@
-const sequelize = require('./database')
+const sequelize = require('./database')                     // pull sequelize constant declared in database.js file
 
-const seed = () => {
+const seed = () => {                                        // build seed function to create tables in database ... one time use
     sequelize.query(`
-        CREATE TABLE users {
-            id SERIAL PRIMARY KEY
-            name varchar(60)
-            password string
-        };
+        CREATE TABLE users (
+            id SERIAL PRIMARY KEY,
+            name VARCHAR(60) NOT NULL,
+            password VARCHAR(128) NOT NULL
+        );
         
-        expenses {
-            id integer pk increments unique
-            user_id integer *> users.id
-            total_expense decimal
-            due_date date null
-            paid_status boolean
-        };
+        CREATE TABLE expenses (
+            id_expenses SERIAL PRIMARY KEY,
+            user_id INTEGER REFERENCES users(id),
+            total_expense DECIMAL(10,2) NOT NULL,
+            due_date DATE NULL,
+            paid_status BOOLEAN NOT NULL
+        );
         
-        income {
-            id integer pk increments unique
-            user_id integer *> users.id
-            total_income integer
-            source_income integer
-        }
-    `).then( () => {
-        console.log("DB has been seeded")
+        CREATE TABLE income (
+            id_income SERIAL PRIMARY KEY,
+            user_id INTEGER REFERENCES users(id),
+            total_income DECIMAL(10,2) NOT NULL,
+            source_income VARCHAR(60) NOT NULL
+        )
+    `).then(() => {
+        console.log("DB has been seeded")                   // feedback if seed is successful
     })
 }
 
-// finish seed file @ 56.01
+module.exports = seed                                       // export seed function to use in server.js

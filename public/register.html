@@ -7,11 +7,20 @@
     <link href="./index.css">
 </head>
 <body>
-    
+    <header>
+        Create a new account:
+    </header>
+    <section id="register_section">
+        <form id="userRegisterForm">
+            <input type="text" placeholder="Username" id="createUser">
+            <input type="text" placeholder="Password" id="createPassword">
+            <button>CREATE ACCOUNT</button>
+        </form>
+    </section>
 
 
-
-
-    <script src="index.js"></script>
+<a href="./index.html">Back to login page</a>
+    <script src="../node_modules/axios/dist/axios.min.js"></script>
+    <script src="./register.js"></script>
 </body>
 </html>
