@@ -20,9 +20,9 @@ app.use(cors())                                     // so we don't have issues r
 app.post('/api/register', registerUser)              // start with endpoint for registering user/password and pass in registerUser function 
 app.post('/api/login', loginUser)                    // add endpoint for logging users in                
 app.post('/api/addIncome', addIncomeData)            // add endpoint for adding income data into DB
-app.post('/api/getIncome', getIncomeData)
+app.get('/api/getIncome', getIncomeData)
 // app.post('/api/addExpense', addExpenseData)
-// app.post('/api/getExpense', getExpenseData)
+app.get('/api/getExpense', getExpenseData)
 
 
 

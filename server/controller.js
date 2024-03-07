@@ -39,20 +39,31 @@ module.exports = {
                 '${incomeSource}'
             );
         `).then(dbRes => {
-            console.log("Controller Query is sending: ", dbRes)
+            console.log("Controller Query is sending addIncome.data: ", dbRes)
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
-    getIncomeData: (req, res) => {
+    getIncomeData: (req, res) => {          // add user_id into query
         sequelize.query(`
             SELECT * FROM income
-            ORDER BY total_income ASC;
+            ORDER BY total_income DESC;
         `).then(dbRes => {
-            console.log('controller dbRes data is: ', dbRes[0])
+            console.log('controller getIncome.dbRes.data is: ', dbRes[0])
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err))
+    },
+    getExpenseData: (req, res) => {         // add user_id into query
+        sequelize.query(`
+            SELECT * FROM expenses
+            ORDER BY total_expense DESC;
+        `).then(dbRes => {
+            console.log('controller getExpense.dbRes.data is: ', dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
     }
 }
+
+
 
 // need to add delete and edit for income (1:43:00)
 // need to add delete, edit, and PAID button functions for expenses
