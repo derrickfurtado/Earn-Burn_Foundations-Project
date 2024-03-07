@@ -5,11 +5,10 @@ const sequelize = require('./database')             // pull in sequelize functio
 
 const seed = require('./seed')                      // pull in seed function 
 const app = express()
-const {registerUser, loginUser, addIncomeData} = require('./controller')      // pull in necessary function from controller.js
+const { registerUser, loginUser, addIncomeData, getIncomeData, addExpenseData, getExpenseData } = require('./controller')      // pull in necessary function from controller.js
 
 
 //=============================================================
-
 
 
 app.use(express.json())                             // so we can capture data from forms
@@ -18,14 +17,12 @@ app.use(cors())                                     // so we don't have issues r
 // app.post('/api/seed',seed)                       // using express via app constant to .POST seed function into database ... one time use
 
 
-app.post('/api/register',registerUser)              // start with endpoint for registering user/password and pass in registerUser function 
-app.post('/api/login',loginUser)                    // add endpoint for logging users in                
-app.post('/api/addIncome',addIncomeData)            // add endpoint for adding income data into DB
-
-
-
-
-
+app.post('/api/register', registerUser)              // start with endpoint for registering user/password and pass in registerUser function 
+app.post('/api/login', loginUser)                    // add endpoint for logging users in                
+app.post('/api/addIncome', addIncomeData)            // add endpoint for adding income data into DB
+app.post('/api/getIncome', getIncomeData)
+// app.post('/api/addExpense', addExpenseData)
+// app.post('/api/getExpense', getExpenseData)
 
 
 

@@ -42,5 +42,17 @@ module.exports = {
             console.log("Controller Query is sending: ", dbRes)
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
+    },
+    getIncomeData: (req, res) => {
+        sequelize.query(`
+            SELECT * FROM income
+            ORDER BY total_income ASC;
+        `).then(dbRes => {
+            console.log('controller dbRes data is: ', dbRes[0])
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err))
     }
 }
+
+// need to add delete and edit for income (1:43:00)
+// need to add delete, edit, and PAID button functions for expenses
