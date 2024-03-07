@@ -2,7 +2,9 @@ const sequelize = require('./database')                     // pull sequelize co
 
 const seed = () => {                                        // build seed function to create tables in database ... one time use
     sequelize.query(`
-        CREATE TABLE users (
+    DROP TABLE IF EXISTS users, expenses, income;
+
+    CREATE TABLE users (
             id SERIAL PRIMARY KEY,
             name VARCHAR(60) NOT NULL,
             password VARCHAR(128) NOT NULL
@@ -10,7 +12,7 @@ const seed = () => {                                        // build seed functi
         
         CREATE TABLE expenses (
             id_expenses SERIAL PRIMARY KEY,
-            user_id INTEGER REFERENCES users(id),
+            user_id INTEGER REFERENCES users(id) NOT NULL,
             total_expense DECIMAL(10,2) NOT NULL,
             due_date DATE NULL,
             paid_status BOOLEAN NOT NULL
@@ -18,7 +20,7 @@ const seed = () => {                                        // build seed functi
         
         CREATE TABLE income (
             id_income SERIAL PRIMARY KEY,
-            user_id INTEGER REFERENCES users(id),
+            user_id INTEGER REFERENCES users(id) NOT NULL,
             total_income DECIMAL(10,2) NOT NULL,
             source_income VARCHAR(60) NOT NULL
         )

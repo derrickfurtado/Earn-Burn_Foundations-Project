@@ -9,24 +9,38 @@ module.exports = {
             VALUES (
                 '${name}',
                 '${password}'                                            
-            )
+            );
         `).then(dbRes => {
             res.status(200).send("Successfully registered User")
         }).catch(err => console.log(err))
     },
     loginUser: (req, res) => {
         const {name, password} = req.body
-        // console.log(password)
+        // console.log(password)                                        // CHECK - query will only return result if the username is found
         sequelize.query(`
             SELECT name, password FROM users
-            WHERE name = '${name}';
+            WHERE name = '${name}';                         
         `).then(dbRes => {
             // console.log(dbRes[0][0].password)
-            if(password === dbRes[0][0].password) {
-                res.status(200).send(dbRes[0])
+            if(password === dbRes[0][0].password) {                     // CHECK - if username is present, this checks if the password matches 
+                res.status(200).send(dbRes[0])                          // if it matches, it sends back that username and password, only.
             } else {
-                res.status(400).send("Password does not match")
+                res.status(400).send("Password does not match")         // error if password doesn't match
             }
-        }).catch(err => console.log("Username does not exist"))
+        }).catch(err => console.log("Username does not exist"))         // error if username does not exist
+    },
+    addIncomeData: (req,res) => {
+        const {incomeTotal, incomeSource} = req.body
+
+        sequelize.query(`
+            INSERT INTO income (total_income, source_income)
+            VALUES (
+                '${incomeTotal}',
+                '${incomeSource}'
+            );
+        `).then(dbRes => {
+            console.log("Controller Query is sending: ", dbRes)
+            res.status(200).send(dbRes)
+        }).catch(err => console.log(err))
     }
 }
