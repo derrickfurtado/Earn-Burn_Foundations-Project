@@ -1,8 +1,11 @@
 Top 3 MVP needs:
 
 1. ✅ User can set up an account with username/password and log into the main webpage.
-2. User can submit income and expense line items and reflects on main page.
+    - needs to be user dependent
+2. ✅ User can submit income and expense line items and reflects on main page.
+    - needs to be user-dependent
 3. User can delete income/expense line items
+    - needs to be user-dependent
 
 Secondary MVP needs:
 

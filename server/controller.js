@@ -14,6 +14,7 @@ module.exports = {
             res.status(200).send("Successfully registered User")
         }).catch(err => console.log(err))
     },
+
     loginUser: (req, res) => {
         const {name, password} = req.body
         // console.log(password)                                        // CHECK - query will only return result if the username is found
@@ -29,35 +30,89 @@ module.exports = {
             }
         }).catch(err => console.log("Username does not exist"))         // error if username does not exist
     },
-    addIncomeData: (req,res) => {
+
+    addIncomeData: (req,res) => {       //add user_id into query
         const {incomeTotal, incomeSource} = req.body
 
         sequelize.query(`
-            INSERT INTO income (total_income, source_income)
+            INSERT INTO income (user_id, total_income, source_income)
             VALUES (
+                '1',
                 '${incomeTotal}',
                 '${incomeSource}'
             );
         `).then(dbRes => {
-            console.log("Controller Query is sending addIncome.data: ", dbRes)
+            // console.log("Controller Query is sending addIncome.data: ", dbRes)
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
+    addExpenseData: (req, res) => {
+        const {expenseTotal, expenseSource, expenseDueDate} = req.body
+
+        sequelize.query(`
+            INSERT INTO expenses (user_id,total_expense, expense_name, due_date, paid_status)
+            VALUES (
+                '1',
+                '${expenseTotal}',
+                '${expenseSource}',
+                '${expenseDueDate}',
+                'false'
+            )
+        `).then(dbRes => {
+            // console.log("Controller Query is sending addExpense.data: ", dbRes)
+            res.status(200).send(dbRes)
+        }).catch(err => console.log(err))
+    },
+
     getIncomeData: (req, res) => {          // add user_id into query
         sequelize.query(`
             SELECT * FROM income
             ORDER BY total_income DESC;
         `).then(dbRes => {
-            console.log('controller getIncome.dbRes.data is: ', dbRes[0])
+            // console.log('controller getIncome.dbRes.data is: ', dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
     },
+
     getExpenseData: (req, res) => {         // add user_id into query
         sequelize.query(`
             SELECT * FROM expenses
             ORDER BY total_expense DESC;
         `).then(dbRes => {
-            console.log('controller getExpense.dbRes.data is: ', dbRes[0])
+            // console.log('controller getExpense.dbRes.data is: ', dbRes[0])
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err))
+    },
+    deleteIncomeData: (req, res) => {
+        let {id} = req.params
+
+        sequelize.query(`
+            DELETE FROM income
+            WHERE id_income = ${id}
+        `).then(() => {
+            return sequelize.query(`
+                SELECT * FROM income
+                ORDER BY total_income DESC;
+            `)
+        }).then(dbRes => {
+            console.log("Income was deleted and controller is sending: ", dbRes[0])
+            res.status(200).send(dbRes[0])
+        }).catch(err => console.log(err))
+    },
+    deleteExpenseData: (req, res) => {
+        console.log("delete request received")
+        let {id} = req.params
+        sequelize.query(`
+            DELETE FROM expenses
+            WHERE id_expenses = ${id}
+            
+        `).then(() => {
+            return sequelize.query(`
+                SELECT * FROM expenses
+                ORDER BY total_expense DESC;
+            `)
+        }).then(dbRes => {
+            console.log("Expense was deleted and controller is sending: ", dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
     }

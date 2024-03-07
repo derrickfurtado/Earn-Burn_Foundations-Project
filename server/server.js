@@ -5,7 +5,7 @@ const sequelize = require('./database')             // pull in sequelize functio
 
 const seed = require('./seed')                      // pull in seed function 
 const app = express()
-const { registerUser, loginUser, addIncomeData, getIncomeData, addExpenseData, getExpenseData } = require('./controller')      // pull in necessary function from controller.js
+const { registerUser, loginUser, addIncomeData, getIncomeData, addExpenseData, getExpenseData, deleteIncomeData, deleteExpenseData } = require('./controller')      // pull in necessary function from controller.js
 
 
 //=============================================================
@@ -21,8 +21,10 @@ app.post('/api/register', registerUser)              // start with endpoint for 
 app.post('/api/login', loginUser)                    // add endpoint for logging users in                
 app.post('/api/addIncome', addIncomeData)            // add endpoint for adding income data into DB
 app.get('/api/getIncome', getIncomeData)
-// app.post('/api/addExpense', addExpenseData)
+app.post('/api/addExpense', addExpenseData)
 app.get('/api/getExpense', getExpenseData)
+app.delete('/api/deleteIncome/:id', deleteIncomeData)
+app.delete('/api/deleteExpense/:id', deleteExpenseData)
 
 
 
