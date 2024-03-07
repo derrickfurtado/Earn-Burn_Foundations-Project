@@ -48,7 +48,7 @@ module.exports = {
     },
     addExpenseData: (req, res) => {
         const {expenseTotal, expenseSource, expenseDueDate} = req.body
-
+        // expenseDueDate = expenseDueDate || null
         sequelize.query(`
             INSERT INTO expenses (user_id,total_expense, expense_name, due_date, paid_status)
             VALUES (
