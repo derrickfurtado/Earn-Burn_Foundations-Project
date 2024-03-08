@@ -1,12 +1,12 @@
 console.log("income_change.js connected")
 
-const formData = document.getElementById('incomeChange')
+const formData = document.getElementById('income_change')
 const incomeAdjustData = document.getElementById('newIncomeData')
 const sourceAdjustData = document.getElementById('newIncomeSource')
 
 const urlParams = new URLSearchParams(window.location.search)
 const urlId = urlParams.get('id')
-console.log("id of item from main page: ", urlId)
+console.log("urlId of item from main page: ", urlId)
 
 
 const adjustIncomeData = (event) => {
@@ -15,13 +15,22 @@ const adjustIncomeData = (event) => {
     const adjustedIncomeData = {
         id: urlId,
         newTotal: incomeAdjustData.value,
-        newSource: sourceAdjustedData.value
+        newSource: sourceAdjustData.value
     }
     axios.put(`http://localhost:4040/api/changeIncome`, adjustedIncomeData)
-        .then()
+        .then(
+            alert(`Income has been updated`),
+            window.location.href = './main.html'
+        )
 }
 
-const adjustExpenseData = (event) => {
-    axios.put(`http://localhost:4040/api/changeExpense`)
-}
+// const adjustExpenseData = (event) => {
+//     axios.put(`http://localhost:4040/api/changeExpense`)
+// }
+
+
+
+
+
+formData.addEventListener('submit', adjustIncomeData)
 

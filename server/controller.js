@@ -118,11 +118,11 @@ module.exports = {
     },
     editIncomeData: (req, res) => {
         console.log("edit request received in server")
-        const {id, newTotal, newSource} = req.params
+        const {id, newTotal, newSource} = req.body
         sequelize.query(`
             UPDATE income
             SET total_income = ${newTotal},
-                source_income = '${newSource}
+                source_income = '${newSource}'
             WHERE id_income = ${id}  
         `).then(dbRes => {
             console.log("Income has been updated")
