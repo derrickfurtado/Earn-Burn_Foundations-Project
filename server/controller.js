@@ -142,6 +142,21 @@ module.exports = {
             console.log("Expense was updated")
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
+    },
+    flipPaidStatus: (req, res) => {
+        console.log("paid status request received")
+        const {id} = req.params
+        sequelize.query(`
+            UPDATE expenses
+            SET paid_status = CASE
+                WHEN paid_status = false THEN true
+                WHEN paid_status = true THEN false
+                END
+            WHERE id_expenses = ${id}
+        `).then(dbRes => {
+            console.log("Paid status updated")
+            res.status(200).send(dbRes)
+        }).catch(err => console.log(err))
     }
 }
 

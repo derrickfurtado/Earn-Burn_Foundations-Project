@@ -11,6 +11,8 @@ const expenseReason = document.getElementById('expenseName')
 const expenseDueDate = document.getElementById('expenseDueDate')
 const expenseSection = document.getElementById('expenseContainer')
 
+// const
+
 
 
 const pushIncomeData = (event) => {
@@ -141,6 +143,8 @@ const createExpenseCard = expenseData => {
 
     expenseDelete.addEventListener('click', () => deleteExpense(expenseData.id_expenses))
 
+    expensePaidStatus.addEventListener('click', () => updateStatus(expenseData.id_expenses))
+
     expenseEdit.addEventListener('click', () => {
         const id = expenseData.id_expenses
         window.location.href = `./expense_change.html?id=${id}`
@@ -172,6 +176,13 @@ const deleteExpense = (id) => {
             res.data.forEach(createExpenseCard)
             console.log("expense deleted")
         }).catch(console.log("something broke in deleteExpense"))
+}
+
+const updateStatus = (id) => {
+    axios.put(`http://localhost:4040/api/changePaidStatus/${id}`)
+        .then(res => {
+            alert("Paid Status has been updated")
+        }).catch(err => console.log(err))
 }
 
 

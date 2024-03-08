@@ -26,7 +26,8 @@ PROCESS:
     - ✅ Build Income entry feature
     - ✅ Build Expenses entry feature
     - ✅ Build Delete features for both
-    - Edit function
+    - ✅ Edit function
+    - PAID Function
     - Build totaling function
 3. Once all Top MVP features are built, build in styling.
     - Style Login page
