@@ -20,12 +20,12 @@ Tertiary MVP needs:
 
 PROCESS:
 
-1. Build out backend set up
-2. Build each feature backend to frontend, one at a time.
-    - Build login feature
-    - Build Income entry feature
-    - Build Expenses entry feature
-    - Build Delete features for both
+1. ✅ Build out backend set up
+2. ✅ Build each feature backend to frontend, one at a time.
+    - ✅ Build login feature
+    - ✅ Build Income entry feature
+    - ✅ Build Expenses entry feature
+    - ✅ Build Delete features for both
     - Edit function
     - Build totaling function
 3. Once all Top MVP features are built, build in styling.

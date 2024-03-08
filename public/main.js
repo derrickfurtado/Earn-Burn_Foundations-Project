@@ -59,7 +59,6 @@ const createIncomeCard = incomeData => {
     cardDelete.classList += 'delete-btn'
     cardDelete.textContent = 'DELETE'
     cardDelete.id = 'income-delete-btn'
-    cardDelete.addEventListener('click', () => deleteIncome(incomeData.id_income))
 
 
     let cardEdit = document.createElement('button')
@@ -77,6 +76,14 @@ const createIncomeCard = incomeData => {
     cardOptions.appendChild(cardEdit)
 
     incomeSection.appendChild(incomeCard)
+    
+    
+    cardDelete.addEventListener('click', () => deleteIncome(incomeData.id_income))
+
+    cardEdit.addEventListener('click', (event) => {
+        const id = incomeData.id_income
+        window.location.href = `./income_change.html?id=${id}`
+    })
 }
 
 const showIncomeData = () => {
@@ -125,11 +132,11 @@ const createExpenseCard = expenseData => {
 
     expenseCard.append(expenseName)
     expenseCard.append(expenseAmount)
-    expenseCard.append(expenseDueDate)
     expenseCard.append(expenseOptions)
     expenseOptions.append(expenseDelete)
     expenseOptions.append(expenseEdit)
     expenseOptions.append(expensePaidStatus)
+    expenseCard.append(expenseDueDate)
 
     expenseSection.append(expenseCard)
 
@@ -161,6 +168,8 @@ const deleteExpense = (id) => {
             console.log("expense deleted")
         }).catch(console.log("something broke in deleteExpense"))
 }
+
+
 
 showIncomeData()
 showExpenseData()

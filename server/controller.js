@@ -115,6 +115,19 @@ module.exports = {
             console.log("Expense was deleted and controller is sending: ", dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
+    },
+    editIncomeData: (req, res) => {
+        console.log("edit request received in server")
+        const {id, newTotal, newSource} = req.params
+        sequelize.query(`
+            UPDATE income
+            SET total_income = ${newTotal},
+                source_income = '${newSource}
+            WHERE id_income = ${id}  
+        `).then(dbRes => {
+            console.log("Income has been updated")
+            res.status(200).send(dbRes)
+        })
     }
 }
 
