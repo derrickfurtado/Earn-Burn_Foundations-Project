@@ -26,7 +26,7 @@ app.get('/api/getExpense', getExpenseData)
 app.delete('/api/deleteIncome/:id', deleteIncomeData)
 app.delete('/api/deleteExpense/:id', deleteExpenseData)
 app.put('/api/changeIncome', editIncomeData)
-// app.put('/api/changeExpense/:id', editExpenseData)
+app.put('/api/changeExpense', editExpenseData)
 
 
 

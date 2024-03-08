@@ -117,7 +117,7 @@ module.exports = {
         }).catch(err => console.log(err))
     },
     editIncomeData: (req, res) => {
-        console.log("edit request received in server")
+        console.log("income edit request received in server")
         const {id, newTotal, newSource} = req.body
         sequelize.query(`
             UPDATE income
@@ -127,7 +127,21 @@ module.exports = {
         `).then(dbRes => {
             console.log("Income has been updated")
             res.status(200).send(dbRes)
-        })
+        }).catch(err => console.log(err))
+    },
+    editExpenseData: (req, res) => {
+        console.log('expense edit request received in server')
+        const {id, newTotal, newSource, newDate} = req.body
+        sequelize.query(`
+            UPDATE expenses
+            SET total_expense = ${newTotal},
+                expense_name = '${newSource}',
+                due_date = '${newDate}'
+            WHERE id_expenses = ${id}
+        `).then(dbRes => {
+            console.log("Expense was updated")
+            res.status(200).send(dbRes)
+        }).catch(err => console.log(err))
     }
 }
 

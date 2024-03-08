@@ -14,9 +14,17 @@
         <a href="./index.html">Sign Out</a>                                             <!-- find out out to log out -->
     </nav>
 
-
+    <section>
+        <form id="expense_change">
+            <input type="text" placeholder="Change Expense Here" id="newExpenseData">
+            <input type="text" placeholder="Change Expense Source Here" id="newExpenseSource">
+            <label for="newDueDate">Due Date: </label>
+            <input type="date"  id="newDueDate">
+            <button>SUBMIT</button>
+        </form>
+    </section>
 
     <script src="../node_modules/axios/dist/axios.min.js"></script>
-    <script src="./edit.js"></script>
+    <script src="./expense_edit.js"></script>
 </body>
 </html>

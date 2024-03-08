@@ -1,6 +1,6 @@
 console.log("main.js is connected")
 
-const formData = document.getElementById('incomeDataForm')
+const incomeForm = document.getElementById('incomeDataForm')
 const incomeData = document.getElementById('incomeData')
 const sourceData = document.getElementById('incomeSourceData')
 const incomeSection = document.getElementById('incomeContainer')
@@ -76,8 +76,8 @@ const createIncomeCard = incomeData => {
     cardOptions.appendChild(cardEdit)
 
     incomeSection.appendChild(incomeCard)
-    
-    
+
+
     cardDelete.addEventListener('click', () => deleteIncome(incomeData.id_income))
 
     cardEdit.addEventListener('click', (event) => {
@@ -117,7 +117,6 @@ const createExpenseCard = expenseData => {
     expenseDelete.textContent = 'DELETE'
     expenseDelete.classList += 'delete-btn'
     expenseDelete.id = 'expense-delete-btn'
-    expenseDelete.addEventListener('click', () => deleteExpense(expenseData.id_expenses))
 
 
     let expenseEdit = document.createElement('button')
@@ -140,6 +139,12 @@ const createExpenseCard = expenseData => {
 
     expenseSection.append(expenseCard)
 
+    expenseDelete.addEventListener('click', () => deleteExpense(expenseData.id_expenses))
+
+    expenseEdit.addEventListener('click', () => {
+        const id = expenseData.id_expenses
+        window.location.href = `./expense_change.html?id=${id}`
+    })
 }
 
 const showExpenseData = () => {
@@ -174,5 +179,5 @@ const deleteExpense = (id) => {
 showIncomeData()
 showExpenseData()
 
-formData.addEventListener('submit', pushIncomeData)
+incomeForm.addEventListener('submit', pushIncomeData)
 expenseForm.addEventListener('submit', pushExpenseData)
