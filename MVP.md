@@ -27,7 +27,7 @@ PROCESS:
     - ✅ Build Expenses entry feature
     - ✅ Build Delete features for both
     - ✅ Edit function
-    - PAID Function
+    - ✅ PAID Function
     - Build totaling function
 3. Once all Top MVP features are built, build in styling.
     - Style Login page

@@ -11,7 +11,8 @@ const expenseReason = document.getElementById('expenseName')
 const expenseDueDate = document.getElementById('expenseDueDate')
 const expenseSection = document.getElementById('expenseContainer')
 
-// const
+const incomeTotalSection = document.getElementById('income-div')
+const expenseTotalSection = document.getElementById('expense-div')
 
 
 
@@ -185,10 +186,39 @@ const updateStatus = (id) => {
         }).catch(err => console.log(err))
 }
 
+const createIncomeTotalCard = (incomeData) => {
+    let incomeTotalCard = document.createElement('div')
+    incomeTotalCard.classList = "sumOfIncome"
+    incomeTotalCard.textContent = incomeData
+
+    incomeTotalCard.append(incomeTotalSection)
+}
+
+const createExpenseTotalCard = (expenseData) => {
+    let expenseTotalCard = document.createElement('div')
+    expenseTotalCard.classList = "sumOfExpenses"
+    expenseTotalCard.textContent = expenseData
+
+    expenseTotalCard.append(expenseTotalSection)
+}
+
+const showIncomeTotal = () => {
+    axios.get(`http://localhost:4040/api/getIncomeTotal`)
+        .then(res => createIncomeTotalCard(res.data)
+        ).catch(err => console.log(err))
+}
+
+const showExpenseTotal = () => {
+    axios.get(`http://localhost:4040/api/getExpenseTotal`)
+        .then(res => createExpenseTotalCard(res.data)
+        ).catch(err => console.log(err))
+}
 
 
 showIncomeData()
 showExpenseData()
+showIncomeTotal()
+showExpenseTotal()
 
 incomeForm.addEventListener('submit', pushIncomeData)
 expenseForm.addEventListener('submit', pushExpenseData)

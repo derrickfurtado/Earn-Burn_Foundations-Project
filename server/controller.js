@@ -157,10 +157,24 @@ module.exports = {
             console.log("Paid status updated")
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
+    },
+    totalIncome: (req, res) => {
+        console.log('total income request received')
+        sequelize.query(`
+            SELECT SUM(total_income) FROM income
+        `).then(dbRes => {
+            console.log(dbRes[0][0])
+            res.status(200).send(dbRes[0][0])
+        }).catch(err => console.log(err))
+    },
+    totalExpense: (req, res) => {
+        console.log('total expenses request received')
+        sequelize.query(`
+            SELECT SUM(total_expense) FROM expenses
+        `).then(dbRes => {
+            console.log(dbRes[0][0])
+            res.status(200).send(dbRes[0][0])
+        }).catch(err => console.log(err))
     }
 }
 
-
-
-// need to add delete and edit for income (1:43:00)
-// need to add delete, edit, and PAID button functions for expenses
