@@ -165,6 +165,7 @@ const deleteIncome = (id) => {
         .then(res => {
             incomeSection.innerHTML = ''
             res.data.forEach(createIncomeCard)
+            window.location.reload()
             console.log("income deleted")
         }).catch(console.log("something broke in deleteIncome"))
 
@@ -175,6 +176,7 @@ const deleteExpense = (id) => {
         .then(res => {
             expenseSection.innerHTML = ''
             res.data.forEach(createExpenseCard)
+            window.location.reload()
             console.log("expense deleted")
         }).catch(console.log("something broke in deleteExpense"))
 }
@@ -189,34 +191,41 @@ const updateStatus = (id) => {
 const createIncomeTotalCard = (incomeData) => {
     let incomeTotalCard = document.createElement('div')
     incomeTotalCard.classList = "sumOfIncome"
-    incomeTotalCard.textContent = incomeData
+    let iData = incomeData.sum === null ? 0 : incomeData.sum
+    incomeTotalCard.textContent = `${iData}`
 
-    incomeTotalCard.append(incomeTotalSection)
+    incomeTotalSection.append(incomeTotalCard)
 }
 
 const createExpenseTotalCard = (expenseData) => {
     let expenseTotalCard = document.createElement('div')
     expenseTotalCard.classList = "sumOfExpenses"
-    expenseTotalCard.textContent = expenseData
+    let iData = expenseData.sum === null ? 0 : expenseData.sum
+    expenseTotalCard.textContent = (`${iData}`)
 
-    expenseTotalCard.append(expenseTotalSection)
+    expenseTotalSection.append(expenseTotalCard)
 }
 
 const showIncomeTotal = () => {
     axios.get(`http://localhost:4040/api/getIncomeTotal`)
-        .then(res => createIncomeTotalCard(res.data)
-        ).catch(err => console.log(err))
+        .then(res => {
+            console.log("Income Total is: ", res.data)
+            createIncomeTotalCard(res.data)
+        }).catch(err => console.log(err))
 }
 
 const showExpenseTotal = () => {
     axios.get(`http://localhost:4040/api/getExpenseTotal`)
-        .then(res => createExpenseTotalCard(res.data)
-        ).catch(err => console.log(err))
+        .then(res => {
+            createExpenseTotalCard(res.data)
+            console.log("Expense Total is: ", res.data)
+        }).catch(err => console.log(err))
 }
 
 
 showIncomeData()
 showExpenseData()
+
 showIncomeTotal()
 showExpenseTotal()
 
