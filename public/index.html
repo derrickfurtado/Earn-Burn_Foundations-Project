@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earn and Burn Financial Tracker</title>
-    <link href="./index.css">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <header>
-        Earn and Burn <br>
-        Monthly Financial Planner
+        <h2>Earn Burn</h2>
+        <h2>Monthly Financial Planner</h2>
     </header>
 
     <section id="login_section">
         <form id="userLoginForm">
-            <input type="text" placeholder="Enter Username" id="userInput">
-            <input type="text" placeholder="Enter Password" id="passwordInput">
-            <button>LOGIN</button>
+            <label for="userInput">Username: </label>
+            <input type="text"id="userInput">
+            <label for="passwordInput">Password: </label>
+            <input type="text" id="passwordInput">
+            <button id="loginBtn">LOGIN</button>
         </form>
     </section>
 
-    <p>Not a user? <a href="./register.html">Register Here</a></p>
+    <div id="register_link">Not a user? <a href="./register.html">Register Here</div>
 
 
 
     <script src="../node_modules/axios/dist/axios.min.js"></script>
     <script src="index.js"></script>
 </body>
+
 </html>

@@ -28,7 +28,7 @@ PROCESS:
     - ✅ Build Delete features for both
     - ✅ Edit function
     - ✅ PAID Function
-    - Build totaling function
+    - ✅ Build totaling function
 3. Once all Top MVP features are built, build in styling.
     - Style Login page
     - style main page

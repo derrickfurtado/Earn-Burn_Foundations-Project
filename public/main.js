@@ -92,7 +92,7 @@ const createIncomeCard = incomeData => {
 const showIncomeData = () => {
     axios.get('http://localhost:4040/api/getIncome')
         .then(res => {
-            console.log('main.js Income.RES.data is: ', res.data)
+            // console.log('main.js Income.RES.data is: ', res.data)
             res.data.forEach(createIncomeCard)
         }).catch(err => console.log(err))
 }
@@ -111,7 +111,7 @@ const createExpenseCard = expenseData => {
 
     let expenseDueDate = document.createElement('div')
     expenseDueDate.classList += 'expense-card-date'
-    expenseDueDate.textContent = (`Due date is: ${expenseData.due_date}`)       // format this date later
+    expenseDueDate.textContent = (`Due date is: ${expenseData.due_date}`)       // !!!!! format this date later
 
     let expenseOptions = document.createElement('div')
     expenseOptions.classList += 'expense-options'
@@ -155,7 +155,7 @@ const createExpenseCard = expenseData => {
 const showExpenseData = () => {
     axios.get('http://localhost:4040/api/getExpense')
         .then(res => {
-            console.log('main.js expense.RES.data is: ', res.data)
+            // console.log('main.js expense.RES.data is: ', res.data)
             res.data.forEach(createExpenseCard)
         }).catch(err => console.log(err))
 }
@@ -163,10 +163,10 @@ const showExpenseData = () => {
 const deleteIncome = (id) => {
     axios.delete(`http://localhost:4040/api/deleteIncome/${id}`)
         .then(res => {
-            incomeSection.innerHTML = ''
+            incomeSection.innerHTML = ''            // clearing all html from section to reload with next line of code
             res.data.forEach(createIncomeCard)
-            window.location.reload()
-            console.log("income deleted")
+            window.location.reload()                    // need to reload page to show totals
+            // console.log("income deleted")
         }).catch(console.log("something broke in deleteIncome"))
 
 }
@@ -174,10 +174,10 @@ const deleteIncome = (id) => {
 const deleteExpense = (id) => {
     axios.delete(`http://localhost:4040/api/deleteExpense/${id}`)
         .then(res => {
-            expenseSection.innerHTML = ''
+            expenseSection.innerHTML = ''               // clearing all html from section to reload with next line of code
             res.data.forEach(createExpenseCard)
-            window.location.reload()
-            console.log("expense deleted")
+            window.location.reload()                    // need to reload page so the totals show
+            // console.log("expense deleted")
         }).catch(console.log("something broke in deleteExpense"))
 }
 
@@ -191,7 +191,7 @@ const updateStatus = (id) => {
 const createIncomeTotalCard = (incomeData) => {
     let incomeTotalCard = document.createElement('div')
     incomeTotalCard.classList = "sumOfIncome"
-    let iData = incomeData.sum === null ? 0 : incomeData.sum
+    let iData = incomeData.sum === null ? 0 : incomeData.sum            // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
     incomeTotalCard.textContent = `${iData}`
 
     incomeTotalSection.append(incomeTotalCard)
@@ -200,7 +200,7 @@ const createIncomeTotalCard = (incomeData) => {
 const createExpenseTotalCard = (expenseData) => {
     let expenseTotalCard = document.createElement('div')
     expenseTotalCard.classList = "sumOfExpenses"
-    let iData = expenseData.sum === null ? 0 : expenseData.sum
+    let iData = expenseData.sum === null ? 0 : expenseData.sum          // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
     expenseTotalCard.textContent = (`${iData}`)
 
     expenseTotalSection.append(expenseTotalCard)
@@ -209,7 +209,7 @@ const createExpenseTotalCard = (expenseData) => {
 const showIncomeTotal = () => {
     axios.get(`http://localhost:4040/api/getIncomeTotal`)
         .then(res => {
-            console.log("Income Total is: ", res.data)
+            // console.log("Income Total is: ", res.data)
             createIncomeTotalCard(res.data)
         }).catch(err => console.log(err))
 }
@@ -218,7 +218,7 @@ const showExpenseTotal = () => {
     axios.get(`http://localhost:4040/api/getExpenseTotal`)
         .then(res => {
             createExpenseTotalCard(res.data)
-            console.log("Expense Total is: ", res.data)
+            // console.log("Expense Total is: ", res.data)
         }).catch(err => console.log(err))
 }
 

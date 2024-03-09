@@ -85,9 +85,9 @@ module.exports = {
     },
     deleteIncomeData: (req, res) => {
         let {id} = req.params
-
+                                    // query is broken into 2: one to delete, other to send data
         sequelize.query(`
-            DELETE FROM income
+            DELETE FROM income              
             WHERE id_income = ${id}
         `).then(() => {
             return sequelize.query(`
@@ -95,12 +95,12 @@ module.exports = {
                 ORDER BY total_income DESC;
             `)
         }).then(dbRes => {
-            console.log("Income was deleted and controller is sending: ", dbRes[0])
+            // console.log("Income was deleted and controller is sending: ", dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
     },
     deleteExpenseData: (req, res) => {
-        console.log("delete request received")
+        // console.log("delete request received")
         let {id} = req.params
         sequelize.query(`
             DELETE FROM expenses
@@ -112,12 +112,12 @@ module.exports = {
                 ORDER BY total_expense DESC;
             `)
         }).then(dbRes => {
-            console.log("Expense was deleted and controller is sending: ", dbRes[0])
+            // console.log("Expense was deleted and controller is sending: ", dbRes[0])
             res.status(200).send(dbRes[0])
         }).catch(err => console.log(err))
     },
     editIncomeData: (req, res) => {
-        console.log("income edit request received in server")
+        // console.log("income edit request received in server")
         const {id, newTotal, newSource} = req.body
         sequelize.query(`
             UPDATE income
@@ -125,12 +125,12 @@ module.exports = {
                 source_income = '${newSource}'
             WHERE id_income = ${id}  
         `).then(dbRes => {
-            console.log("Income has been updated")
+            // console.log("Income has been updated")
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
     editExpenseData: (req, res) => {
-        console.log('expense edit request received in server')
+        // console.log('expense edit request received in server')
         const {id, newTotal, newSource, newDate} = req.body
         sequelize.query(`
             UPDATE expenses
@@ -139,12 +139,12 @@ module.exports = {
                 due_date = '${newDate}'
             WHERE id_expenses = ${id}
         `).then(dbRes => {
-            console.log("Expense was updated")
+            // console.log("Expense was updated")
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
     flipPaidStatus: (req, res) => {
-        console.log("paid status request received")
+        // console.log("paid status request received")
         const {id} = req.params
         sequelize.query(`
             UPDATE expenses
@@ -154,25 +154,25 @@ module.exports = {
                 END
             WHERE id_expenses = ${id}
         `).then(dbRes => {
-            console.log("Paid status updated")
+            // console.log("Paid status updated")
             res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
     totalIncome: (req, res) => {
-        console.log('total income request received')
+        // console.log('total income request received')
         sequelize.query(`
             SELECT SUM(total_income) FROM income
         `).then(dbRes => {
-            console.log(dbRes[0][0])
+            // console.log(dbRes[0][0])
             res.status(200).send(dbRes[0][0])
         }).catch(err => console.log(err))
     },
     totalExpense: (req, res) => {
-        console.log('total expenses request received')
+        // console.log('total expenses request received')
         sequelize.query(`
             SELECT SUM(total_expense) FROM expenses
         `).then(dbRes => {
-            console.log(dbRes[0][0])
+            // console.log(dbRes[0][0])
             res.status(200).send(dbRes[0][0])
         }).catch(err => console.log(err))
     }
