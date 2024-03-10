@@ -1,3 +1,6 @@
+
+/* styling for Login and Register page */
+
 body {
     font-family: "Teko", sans-serif;
     font-optical-sizing: auto;
@@ -7,7 +10,7 @@ body {
     
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
+    align-items: center;
     /* justify-content: space-evenly; */
    
     margin: 10px;
@@ -42,14 +45,16 @@ header {
 #login_section {
     display: flex;
     background-color: pink;
-    justify-content: flex-end;
-
+    justify-content: center;
+    
     margin: 10px;
 
     border-style: solid;
     border-width: 1px;
     border-radius: 20px;
     padding-right: 25px;
+
+    width: 50%;
 
 }
     #userLoginForm {
