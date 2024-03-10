@@ -19,7 +19,7 @@ module.exports = {
         const {name, password} = req.body
         // console.log(password)                                        // CHECK - query will only return result if the username is found
         sequelize.query(`
-            SELECT name, password FROM users
+            SELECT id, name, password FROM users
             WHERE name = '${name}';                         
         `).then(dbRes => {
             // console.log(dbRes[0][0].password)
