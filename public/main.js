@@ -53,7 +53,7 @@ const createIncomeCard = incomeData => {
 
     let cardAmount = document.createElement('div')
     cardAmount.classList += 'income-card-amount'
-    cardAmount.textContent = incomeData.total_income
+    cardAmount.textContent = `$ ${incomeData.total_income}`
 
     let cardOptions = document.createElement('div')
     cardOptions.classList += 'income-options'
@@ -103,7 +103,7 @@ const createExpenseCard = expenseData => {
 
     let expenseAmount = document.createElement('div')
     expenseAmount.classList += 'expense-card-amount'
-    expenseAmount.textContent = expenseData.total_expense
+    expenseAmount.textContent = `$ ${expenseData.total_expense}`
 
     let expenseName = document.createElement('h4')
     expenseName.classList += 'expense-card-name'
@@ -192,7 +192,7 @@ const createIncomeTotalCard = (incomeData) => {
     let incomeTotalCard = document.createElement('div')
     incomeTotalCard.classList = "sumOfIncome"
     let iData = incomeData.sum === null ? 0 : incomeData.sum            // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
-    incomeTotalCard.textContent = `${iData}`
+    incomeTotalCard.textContent = `$ ${iData}`
 
     incomeTotalSection.append(incomeTotalCard)
 }
@@ -201,7 +201,7 @@ const createExpenseTotalCard = (expenseData) => {
     let expenseTotalCard = document.createElement('div')
     expenseTotalCard.classList = "sumOfExpenses"
     let iData = expenseData.sum === null ? 0 : expenseData.sum          // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
-    expenseTotalCard.textContent = (`${iData}`)
+    expenseTotalCard.textContent = (`$ ${iData}`)
 
     expenseTotalSection.append(expenseTotalCard)
 }
