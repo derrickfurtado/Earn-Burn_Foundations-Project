@@ -42,25 +42,30 @@ header {
 #login_section {
     display: flex;
     background-color: pink;
-    justify-content: center;
+    justify-content: flex-end;
+
     margin: 10px;
 
     border-style: solid;
     border-width: 1px;
     border-radius: 20px;
+    padding-right: 25px;
 
 }
     #userLoginForm {
-        display: flex;
-        flex-direction: column;
-        background-color: red;
-        margin: 5px
+        position: relative;
+        /* background-color: red; */
+        width: 190px;
+        margin: 5px;
+        top: 10px;
+
     }
 
     label {
         position: relative;
+        /* background-color: orange; */
         right: 80px;
-        top: 24px;
+        top: 23px;
     }
 
     #loginBtn {
@@ -74,8 +79,9 @@ header {
     }
 
 #register_link {
-    display: flex;
+    position: relative;
     background-color: aqua;
     margin: 10px;
-    
+    top: 40vh;
+
 }
