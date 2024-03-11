@@ -207,7 +207,8 @@ const updateStatus = (id) => {
     axios.put(`http://localhost:4040/api/changePaidStatus/${id}`)
         .then(res => {
             alert("Paid Status has been updated")
-        }).catch(err => console.log(err))
+            window.location.reload()
+            }).catch(err => console.log(err))
 }
 
 const createIncomeTotalCard = (incomeData) => {
@@ -255,7 +256,7 @@ const createRunwayCard = (runwayData) => {
     runwayCard.classList = "runwayData"
     let iData = runwayData[0] === null ? 0 : runwayData[0]
     // console.log(iData)
-    runwayCard.textContent = (`$ ${iData}`)
+    runwayCard.textContent = (`$ ${iData.toFixed(2)}`)
 
     runwaySection.append(runwayCard)
 }
@@ -264,7 +265,7 @@ const createUnpaidDebtCard = (debtData) => {
     let debtCard = document.createElement('div')
     debtCard.classList = "unPaidDebtData"
     let iData = +debtData[0].sum === null ? 0 : +debtData[0].sum
-    debtCard.textContent = (`$ ${iData}`)
+    debtCard.textContent = (`$ ${iData.toFixed(2)}`)
 
     unpaidDebtSection.append(debtCard)
 }

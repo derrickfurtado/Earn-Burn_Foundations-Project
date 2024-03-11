@@ -176,3 +176,11 @@ h2 {
 .sumOfIncome, .sumOfExpenses, .runwayData, .unPaidDebtData {
     font-size: 5vh;
 }
+
+#expenseContainer h3, #expense-title, #income-title, #unpaid-title, #runway-title {
+    font-size: 33px;
+}
+
+#incomeContainer h3 {
+    font-size: 33px;
+}
