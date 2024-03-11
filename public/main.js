@@ -4,6 +4,8 @@ const incomeForm = document.getElementById('incomeDataForm')
 const incomeData = document.getElementById('incomeData')
 const sourceData = document.getElementById('incomeSourceData')
 const incomeSection = document.getElementById('incomeContainer')
+const runwaySection = document.getElementById('runway')
+const unpaidDebtSection = document.getElementById('unpaid-debt')
 
 const expenseForm = document.getElementById('addExpenseData')
 const expenseAmount = document.getElementById('expenseData')
@@ -13,6 +15,7 @@ const expenseSection = document.getElementById('expenseContainer')
 
 const incomeTotalSection = document.getElementById('income-div')
 const expenseTotalSection = document.getElementById('expense-div')
+
 
 
 
@@ -247,6 +250,42 @@ const showExpenseTotal = () => {
         }).catch(err => console.log(err))
 }
 
+const createRunwayCard = (runwayData) => {
+    let runwayCard = document.createElement('div')
+    runwayCard.classList = "runwayData"
+    let iData = runwayData[0] === null ? 0 : runwayData[0]
+    // console.log(iData)
+    runwayCard.textContent = (`$ ${iData}`)
+
+    runwaySection.append(runwayCard)
+}
+
+const createUnpaidDebtCard = (debtData) => {
+    let debtCard = document.createElement('div')
+    debtCard.classList = "unPaidDebtData"
+    let iData = +debtData[0].sum === null ? 0 : +debtData[0].sum
+    debtCard.textContent = (`$ ${iData}`)
+
+    unpaidDebtSection.append(debtCard)
+}
+
+const showRunway = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = urlParams.get('id')
+
+    axios.get(`http://localhost:4040/api/getRunway/${id}`)
+        .then(res => createRunwayCard(res.data))
+        .catch(err => console.log(err))
+}
+
+const showUnpaidDebt = () => {
+    const urlParams = new URLSearchParams(window.location.search)
+    const id = urlParams.get('id')
+
+    axios.get(`http://localhost:4040/api/getUnpaid/${id}`)
+        .then(res => createUnpaidDebtCard(res.data))
+        .catch(err => console.log(err))
+}
 
 
 showIncomeData()
@@ -254,6 +293,9 @@ showExpenseData()
 
 showIncomeTotal()
 showExpenseTotal()
+
+showRunway()
+showUnpaidDebt()
 
 incomeForm.addEventListener('submit', pushIncomeData)
 expenseForm.addEventListener('submit', pushExpenseData)

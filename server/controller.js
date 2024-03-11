@@ -183,6 +183,25 @@ module.exports = {
             // console.log(dbRes[0][0])
             res.status(200).send(dbRes[0][0])
         }).catch(err => console.log(err))
+    },
+    calcRunway: (req, res) => {
+        const { id } = req.params
+        sequelize.query(`
+            SELECT SUM(total_income) FROM income
+            WHERE user_id = ${id};
+        `).then(dbRes => {
+            sequelize.query(`
+            SELECT SUM(total_expense) FROM expenses
+            WHERE user_id = ${id};
+            `).then(dbRes2 => res.status(200).send([dbRes[0][0].sum - dbRes2[0][0].sum]))
+        }).catch(err => console.log(err))
+    },
+    calcUnpaid: (req, res) => {
+        const {id} = req.params
+        sequelize.query(`
+            SELECT SUM(total_expense) FROM expenses
+            WHERE paid_status = false AND user_id = ${id}
+        `).then(dbRes => res.status(200).send(dbRes[0])
+        ).catch(err => console.log(err))
     }
 }
-

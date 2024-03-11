@@ -20,7 +20,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+   
 
     min-height: 100vh;
     width: 100%;
@@ -34,18 +34,22 @@ body {
 }
 
 header {
+    display: flex;
+    justify-content: space-around;
     width: 100%;
+    margin-top: 40px;
+    margin-bottom: 30px;
     padding-left: 10px;
     padding-right: 10px;
+    
 }
 
 nav {
     display: flex;
     justify-content: space-between;
+    width: 80%;
 
-    margin-bottom: 70px;
-    margin-top: 20px;
-    padding: 50px;
+ 
     color: antiquewhite;
 
 
@@ -68,8 +72,15 @@ nav {
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
+    margin-bottom: 30px;
+
+    box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
-#main-forms, #containers, #analytics{
+
+#containers {
+    margin-bottom: 30px;
+}
+#main-forms, #containers, #analytics, #analytics-2{
     display: flex;
     justify-content: space-between;
     width: 90%;
@@ -111,9 +122,11 @@ h2 {
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
+
+    box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
 
-#incomeContainer, #expenseContainer, #income-div, #expense-div{
+#incomeContainer, #expenseContainer, #income-div, #expense-div, #runway, #unpaid-debt{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -127,10 +140,13 @@ h2 {
     border-width: 1px;
 }
 
-#income-div, #expense-div {
+#income-div, #expense-div, #runway, #unpaid-debt {
+  
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
+
+    box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
 
 .expense-card, .income-card {
@@ -157,6 +173,6 @@ h2 {
     margin-bottom: 3px;
 }
 
-.sumOfIncome, .sumOfExpenses {
+.sumOfIncome, .sumOfExpenses, .runwayData, .unPaidDebtData {
     font-size: 5vh;
 }
