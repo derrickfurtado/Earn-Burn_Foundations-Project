@@ -1,8 +1,13 @@
 /* Base styling for Login and Register page */
-html, body {
+html,
+body {
     height: 100%;
     margin: 0;
     padding: 0;
+
+    background-image: url('https://images.unsplash.com/photo-1580616876001-bd52f55cad59?q=80&w=1762&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+
+    background-size: cover;
 }
 
 body {
@@ -33,6 +38,13 @@ header {
     flex-direction: column;
     align-items: center;
     font-size: xx-large;
+    color: antiquewhite;
+
+    border-radius: 30px;
+    padding: 2%;
+    background-color: rgba(0, 0, 0, 0.696);
+
+    box-shadow: 18px 28px 41px -3px rgba(43, 125, 139, 0.75);
 }
 
 #login_section {
@@ -40,34 +52,42 @@ header {
     width: 70%;
     justify-content: center;
     padding: 5%;
+    color: antiquewhite;
+
 
     border-color: black;
     border-style: solid;
     border-width: 1px;
     border-radius: 30px;
+
+    max-width: 500px;
+    background-color: rgba(0, 0, 0, 0.696);
+    box-shadow: 18px 28px 41px -3px rgba(43, 125, 139, 0.75);
 }
 
 #register_section {
     display: flex;
     flex-direction: column;
     width: 70%;
-    align-items: center;
+    justify-content: center;
     padding: 5%;
+    color: antiquewhite;
+
 
     border-color: black;
     border-style: solid;
     border-width: 1px;
     border-radius: 30px;
-}
 
-#userRegisterForm {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    max-width: 500px;
+    max-height:;
+
+    background-color: rgba(0, 0, 0, 0.696);
+    box-shadow: 18px 28px 41px -3px rgba(43, 125, 139, 0.75);
 }
 
 #createAccountBtn {
-    width: 55%;
+    width: 60%;
 }
 
 
@@ -79,18 +99,46 @@ header {
 #userLoginForm {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
+    width: 70%;
 
 
-    margin-left: 5%;
+
 }
 
 #loginBtn {
     width: 40%;
 }
 
-#passwordInput{
+#passwordInput,
+#userInput,
+#createUser,
+#createPassword {
     margin-bottom: 5%;
+    width: 80%;
 }
 
+h3,
+#userRegisterForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+#createAccountBtn {
+    width: 30%;
+}
+
+label {
+    margin-bottom: 28%;
+}
+
+#footerLink {
+    right: 200px;
+    color: rgb(0, 0, 0);
+
+    background-color: white;
+    border-radius: 30%;
+    padding: 10px;
+    box-shadow: 18px 28px 41px -3px rgba(43, 125, 139, 0.75);
+}

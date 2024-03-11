@@ -4,6 +4,10 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
+
+    background-image: url("https://images.unsplash.com/photo-1615250068983-3188832dfefc?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+
+    background-size: cover;
 }
 
 body {
@@ -39,21 +43,37 @@ nav {
     display: flex;
     justify-content: space-between;
 
+    margin-bottom: 70px;
+    margin-top: 20px;
+    padding: 50px;
+    color: antiquewhite;
+
+
+    background-color: rgba(0, 0, 0, 0.42);
     border-color: black;
     border-style: solid;
     border-width: 1px;
+    padding: 5px;
 }
 
 #nav-links {
     display: flex;
     width: 130px;
     justify-content: space-between;
+    
+    
 }
 
-#main-forms, #containers{
+#main-forms {
+    background-color: rgba(0, 0, 0, 0.365);
+    padding: 10px;
+    border-radius: 30px;
+}
+#main-forms, #containers, #analytics{
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
+    color: antiquewhite;
 
 }
 
@@ -87,7 +107,13 @@ h2 {
     margin-bottom: 5px;
 }
 
-#incomeContainer, #expenseContainer{
+#incomeContainer, #expenseContainer {
+    background-color: rgba(0, 0, 0, 0.365);
+    padding: 10px;
+    border-radius: 30px;
+}
+
+#incomeContainer, #expenseContainer, #income-div, #expense-div{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -101,6 +127,12 @@ h2 {
     border-width: 1px;
 }
 
+#income-div, #expense-div {
+    background-color: rgba(0, 0, 0, 0.365);
+    padding: 10px;
+    border-radius: 30px;
+}
+
 .expense-card, .income-card {
     display: flex;
     flex-direction: column;
@@ -111,9 +143,20 @@ h2 {
     border-color: black;
     border-style: solid;
     border-width: 1px;
+    background-color: rgba(0, 0, 0, 0.728);
+    border-radius: 30px;
+    padding: 15px;
 }
 
-.expense-card-name, .expense-card-amount, .expense-card-date, .income-card-amount, .delete-btn, .edit-btn, .paid-btn {
-    margin: 2px;
+.expense-card-name, .expense-card-date, .delete-btn, .edit-btn, .paid-btn {
+    margin: 3px;
 }
 
+.expense-card-amount, .income-card-amount{
+    font-size: 3vh;
+    margin-bottom: 3px;
+}
+
+.sumOfIncome, .sumOfExpenses {
+    font-size: 5vh;
+}

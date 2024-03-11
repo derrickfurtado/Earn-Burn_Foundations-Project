@@ -30,8 +30,8 @@ PROCESS:
     - ✅ PAID Function
     - ✅ Build totaling function
 3. Once all Top MVP features are built, build in styling.
-    - Style Login page
-    - style main page
+    - ✅ Style Login page
+    - ✅ style main page
 4. Once styling is done, build Analytics page.
     - Build sections for each
         - Debt-to-Income Ratio
