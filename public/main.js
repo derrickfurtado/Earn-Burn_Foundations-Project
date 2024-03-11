@@ -16,6 +16,7 @@ const expenseTotalSection = document.getElementById('expense-div')
 
 
 
+
 const pushIncomeData = (event) => {
     event.preventDefault()
     const urlParams = new URLSearchParams(window.location.search)
@@ -245,6 +246,7 @@ const showExpenseTotal = () => {
             // console.log("Expense Total is: ", res.data)
         }).catch(err => console.log(err))
 }
+
 
 
 showIncomeData()

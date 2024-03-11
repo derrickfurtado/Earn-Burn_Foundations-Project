@@ -6,49 +6,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Earn and Burn - Home</title>
     <link rel="stylesheet" href="./reset.css">
-    <!-- <link rel="stylesheet" href="./index.css"> -->
+    <link rel="stylesheet" href="./main.css">
 </head>
 
 <body>
     <header>
         <nav>
             <h2>Earn and Burn</h2>
-            <a href="./main.html">Home</a>
-            <!-- <a href="./dashboard.html">Analytics</a>                            -->
-                                                                                                    <!--REMOVING DASHBOARD/ANALYTICS due to time constraint -->
-            <a href="./index.html">Sign Out</a> <!-- find out out to log out -->
+            <div id="nav-links">
+                <a href="#" id="homeBtn">Home</a>
+                <!-- <a href="./dashboard.html">Analytics</a>                            -->
+                <!--REMOVING DASHBOARD/ANALYTICS due to time constraint -->
+                <a href="./index.html">Sign Out</a> <!-- find out out to log out -->
+            </div>
         </nav>
     </header>
 
-    <section id="incomeSection">
-        <h2><label for="incomeDataForm">EARN</label></h2>
-        <form id="incomeDataForm">
+    <section id="main-forms">
+        <section id="incomeSection">
+            <h2><label for="incomeDataForm">EARN</label></h2>
+            <form id="incomeDataForm">
 
-            <input type="text" placeholder="Add Monthly Income" id="incomeData">
-            <input type="text" placeholder="Add Income Source" id="incomeSourceData">
-            <button>SUBMIT</button>
-        </form>
+                <input type="text" placeholder="Add Monthly Income" id="incomeData">
+                <input type="text" placeholder="Add Income Source" id="incomeSourceData">
+                <button>SUBMIT</button>
+            </form>
+        </section>
+
+        <section id="expenseSection">
+            <h2><label for="addExpenseData">BURN</label></h2>
+            <form id="addExpenseData">
+                <input type="text" placeholder="Add Monthly Expense" id="expenseData">
+                <input type="text" placeholder="Reason for Expense" id="expenseName">
+                <label for="expenseDueDate" id="dueDateLabel">Recurring Due Date (If Applicable)</label>
+                <input type="date" id="expenseDueDate">
+                <button>SUBMIT</button>
+            </form>
+        </section>
     </section>
 
-    <section id="expenseSection">
-        <h2><label for="addExpenseData">BURN</label></h2>
-        <form id="addExpenseData">
-            <input type="text" placeholder="Add Monthly Expense" id="expenseData">
-            <input type="text" placeholder="Reason for Expense" id="expenseName">
-            <label for="expenseDueDate">Recurring Due Date (If Applicable)</label>
-            <input type="date" id="expenseDueDate">
-            <button>SUBMIT</button>
-        </form>
-    </section>
+    <section id="containers">
+        <section id="incomeContainer">
+            <h3>Income Summary:</h3>
+        </section>
 
-    <section id="incomeContainer">
-        <h3>Income Summary:</h3>
+        <section id="expenseContainer">
+            <h3>Expense Summary:</h3>
+        </section>
     </section>
-
-    <section id="expenseContainer">
-        <h3>Expense Summary:</h3>
-    </section>
-
     <section>
         <div id="income-div">
             <h3 id="income-title">Income Total:</h3>
@@ -57,7 +62,6 @@
             <h3 id="expense-title">Expenses Total:</h3>
         </div>
     </section>
-
 
     <script src="../node_modules/axios/dist/axios.min.js"></script>
     <script src="./main.js"></script>

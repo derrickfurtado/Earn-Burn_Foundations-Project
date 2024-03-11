@@ -1,0 +1,119 @@
+/* Base styling for Main page */
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Teko", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-size: large;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 10px;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+header {
+    width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+#nav-links {
+    display: flex;
+    width: 130px;
+    justify-content: space-between;
+}
+
+#main-forms, #containers{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+}
+
+#expenseSection, #incomeSection, #incomeContainer, #expenseContainer{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+#addExpenseData, #incomeDataForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#incomeSourceData, #incomeData, #expenseData, #expenseName {
+    width: 50%;
+    margin: 5px;
+}
+
+#dueDateLabel {
+    font-size: small;
+}
+
+#expenseDueDate {
+    margin-bottom: 5px;
+}
+
+#incomeContainer, #expenseContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    margin: 15px;
+    border-radius: 20px;
+    padding: 10px;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.expense-card, .income-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+
+    border-color: black;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.expense-card-name, .expense-card-amount, .expense-card-date, .income-card-amount, .delete-btn, .edit-btn, .paid-btn {
+    margin: 2px;
+}
+

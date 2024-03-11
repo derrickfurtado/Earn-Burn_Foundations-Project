@@ -2,28 +2,28 @@ const sequelize = require('./database')                                       //
 
 module.exports = {
     registerUser: (req, res) => {
-        const {name, password} = req.body
-                                                                        // will need to hash these passwords at some point
+        const { name, password } = req.body
+        // will need to hash these passwords at some point                                             
         sequelize.query(`                                              
-            INSERT INTO users (name, password)
-            VALUES (
-                '${name}',
-                '${password}'                                            
-            );
-        `).then(dbRes => {
-            res.status(200).send("Successfully registered User")
+        INSERT INTO users(name, password)
+        VALUES(
+            '${name}',
+            '${password}'
+        )`).then(dbRes => {
+            console.log("New user registered")
+            res.status(200).send(dbRes)
         }).catch(err => console.log(err))
     },
 
     loginUser: (req, res) => {
-        const {name, password} = req.body
+        const { name, password } = req.body
         // console.log(password)                                        // CHECK - query will only return result if the username is found
         sequelize.query(`
             SELECT id, name, password FROM users
             WHERE name = '${name}';                         
         `).then(dbRes => {
             // console.log(dbRes[0][0].password)
-            if(password === dbRes[0][0].password) {                     // CHECK - if username is present, this checks if the password matches 
+            if (password === dbRes[0][0].password) {                     // CHECK - if username is present, this checks if the password matches 
                 res.status(200).send(dbRes[0])                          // if it matches, it sends back that username and password, only.
             } else {
                 res.status(400).send("Password does not match")         // error if password doesn't match
@@ -31,8 +31,8 @@ module.exports = {
         }).catch(err => console.log("Username does not exist"))         // error if username does not exist
     },
 
-    addIncomeData: (req,res) => {      
-        const {user_id, incomeTotal, incomeSource} = req.body
+    addIncomeData: (req, res) => {
+        const { user_id, incomeTotal, incomeSource } = req.body
 
         sequelize.query(`
             INSERT INTO income (user_id, total_income, source_income)
@@ -47,7 +47,7 @@ module.exports = {
         }).catch(err => console.log(err))
     },
     addExpenseData: (req, res) => {
-        const {user_id, expenseTotal, expenseSource, expenseDueDate} = req.body
+        const { user_id, expenseTotal, expenseSource, expenseDueDate } = req.body
         // expenseDueDate = expenseDueDate || null
         sequelize.query(`
             INSERT INTO expenses (user_id,total_expense, expense_name, due_date, paid_status)
@@ -88,8 +88,8 @@ module.exports = {
         }).catch(err => console.log(err))
     },
     deleteIncomeData: (req, res) => {
-        let {id} = req.params
-                                    // query is broken into 2: one to delete, other to send data
+        let { id } = req.params
+        // query is broken into 2: one to delete, other to send data
         sequelize.query(`
             DELETE FROM income              
             WHERE id_income = ${id}
@@ -105,7 +105,7 @@ module.exports = {
     },
     deleteExpenseData: (req, res) => {
         // console.log("delete request received")
-        let {id} = req.params
+        let { id } = req.params
         sequelize.query(`
             DELETE FROM expenses
             WHERE id_expenses = ${id}
@@ -122,7 +122,7 @@ module.exports = {
     },
     editIncomeData: (req, res) => {
         // console.log("income edit request received in server")
-        const {id, newTotal, newSource} = req.body
+        const { id, newTotal, newSource } = req.body
         sequelize.query(`
             UPDATE income
             SET total_income = ${newTotal},
@@ -135,7 +135,7 @@ module.exports = {
     },
     editExpenseData: (req, res) => {
         // console.log('expense edit request received in server')
-        const {id, newTotal, newSource, newDate} = req.body
+        const { id, newTotal, newSource, newDate } = req.body
         sequelize.query(`
             UPDATE expenses
             SET total_expense = ${newTotal},
@@ -149,7 +149,7 @@ module.exports = {
     },
     flipPaidStatus: (req, res) => {
         // console.log("paid status request received")
-        const {id} = req.params
+        const { id } = req.params
         sequelize.query(`
             UPDATE expenses
             SET paid_status = CASE
@@ -164,7 +164,7 @@ module.exports = {
     },
     totalIncome: (req, res) => {
         // console.log('total income request received')
-        const {urlId} = req.params
+        const { urlId } = req.params
         sequelize.query(`
             SELECT SUM(total_income) FROM income
             WHERE user_id = ${urlId}
@@ -175,7 +175,7 @@ module.exports = {
     },
     totalExpense: (req, res) => {
         // console.log('total expenses request received')
-        const {urlId} = req.params
+        const { urlId } = req.params
         sequelize.query(`
             SELECT SUM(total_expense) FROM expenses
             WHERE user_id = ${urlId}
