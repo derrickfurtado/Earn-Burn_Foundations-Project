@@ -31,13 +31,13 @@ module.exports = {
         }).catch(err => console.log("Username does not exist"))         // error if username does not exist
     },
 
-    addIncomeData: (req,res) => {       //add user_id into query
-        const {incomeTotal, incomeSource} = req.body
+    addIncomeData: (req,res) => {      
+        const {user_id, incomeTotal, incomeSource} = req.body
 
         sequelize.query(`
             INSERT INTO income (user_id, total_income, source_income)
             VALUES (
-                '1',
+                '${user_id}',
                 '${incomeTotal}',
                 '${incomeSource}'
             );
@@ -47,12 +47,12 @@ module.exports = {
         }).catch(err => console.log(err))
     },
     addExpenseData: (req, res) => {
-        const {expenseTotal, expenseSource, expenseDueDate} = req.body
+        const {user_id, expenseTotal, expenseSource, expenseDueDate} = req.body
         // expenseDueDate = expenseDueDate || null
         sequelize.query(`
             INSERT INTO expenses (user_id,total_expense, expense_name, due_date, paid_status)
             VALUES (
-                '1',
+                '${user_id}',
                 '${expenseTotal}',
                 '${expenseSource}',
                 '${expenseDueDate}',
@@ -65,8 +65,10 @@ module.exports = {
     },
 
     getIncomeData: (req, res) => {          // add user_id into query
+        const urlId = req.params
         sequelize.query(`
             SELECT * FROM income
+            WHERE user_id = ${urlId.urlId}
             ORDER BY total_income DESC;
         `).then(dbRes => {
             // console.log('controller getIncome.dbRes.data is: ', dbRes[0])
@@ -75,8 +77,10 @@ module.exports = {
     },
 
     getExpenseData: (req, res) => {         // add user_id into query
+        const urlId = req.params
         sequelize.query(`
             SELECT * FROM expenses
+            WHERE user_id = ${urlId.urlId}
             ORDER BY total_expense DESC;
         `).then(dbRes => {
             // console.log('controller getExpense.dbRes.data is: ', dbRes[0])
@@ -160,8 +164,10 @@ module.exports = {
     },
     totalIncome: (req, res) => {
         // console.log('total income request received')
+        const {urlId} = req.params
         sequelize.query(`
             SELECT SUM(total_income) FROM income
+            WHERE user_id = ${urlId}
         `).then(dbRes => {
             // console.log(dbRes[0][0])
             res.status(200).send(dbRes[0][0])
@@ -169,8 +175,10 @@ module.exports = {
     },
     totalExpense: (req, res) => {
         // console.log('total expenses request received')
+        const {urlId} = req.params
         sequelize.query(`
             SELECT SUM(total_expense) FROM expenses
+            WHERE user_id = ${urlId}
         `).then(dbRes => {
             // console.log(dbRes[0][0])
             res.status(200).send(dbRes[0][0])

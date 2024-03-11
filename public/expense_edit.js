@@ -5,15 +5,16 @@ const sourceAdjustedData = document.getElementById('newExpenseSource')
 const newDueDate = document.getElementById('newDueDate')
 
 const urlParams = new URLSearchParams(window.location.search)
-const urlId = urlParams.get('id')
-console.log("urlId of item from main page: ", urlId)
+const user_id = urlParams.get('id')
+const item_id = urlParams.get('item_id')
+
 
 
 const adjustExpenseData = (event) => {
     event.preventDefault()
 
     const adjustedExpenseData = {
-        id: urlId,
+        id: item_id,
         newTotal: expenseAdjustData.value,
         newSource: sourceAdjustedData.value,
         newDate: newDueDate.value
@@ -22,7 +23,7 @@ const adjustExpenseData = (event) => {
     axios.put(`http://localhost:4040/api/changeExpense`, adjustedExpenseData)
         .then(
             alert(`Expense has been updated`),
-            window.location.href = './main.html'
+            window.location.href = `./main.html?id=${user_id}`
         ).catch(err => console.log(err))
 }
 

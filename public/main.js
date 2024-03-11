@@ -18,8 +18,12 @@ const expenseTotalSection = document.getElementById('expense-div')
 
 const pushIncomeData = (event) => {
     event.preventDefault()
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
 
     const newIncomeData = {
+        user_id: urlId,
         incomeTotal: incomeData.value,
         incomeSource: sourceData.value
     }
@@ -33,8 +37,12 @@ const pushIncomeData = (event) => {
 
 const pushExpenseData = (event) => {
     event.preventDefault()
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
 
     const newExpenseData = {
+        user_id: urlId,
         expenseTotal: expenseAmount.value,
         expenseSource: expenseReason.value,
         expenseDueDate: expenseDueDate.value
@@ -84,13 +92,18 @@ const createIncomeCard = incomeData => {
     cardDelete.addEventListener('click', () => deleteIncome(incomeData.id_income))
 
     cardEdit.addEventListener('click', (event) => {
-        const id = incomeData.id_income
-        window.location.href = `./income_change.html?id=${id}`
+        const urlParams = new URLSearchParams(window.location.search)
+        const user_id = urlParams.get('id')
+        const item_id = incomeData.id_income
+        window.location.href = `./income_change.html?id=${user_id}&item_id=${item_id}`
     })
 }
 
 const showIncomeData = () => {
-    axios.get('http://localhost:4040/api/getIncome')
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
+    axios.get(`http://localhost:4040/api/getIncome/${urlId}`)
         .then(res => {
             // console.log('main.js Income.RES.data is: ', res.data)
             res.data.forEach(createIncomeCard)
@@ -147,13 +160,18 @@ const createExpenseCard = expenseData => {
     expensePaidStatus.addEventListener('click', () => updateStatus(expenseData.id_expenses))
 
     expenseEdit.addEventListener('click', () => {
-        const id = expenseData.id_expenses
-        window.location.href = `./expense_change.html?id=${id}`
+        const urlParams = new URLSearchParams(window.location.search)
+        const user_id = urlParams.get('id')
+        const item_id = expenseData.id_expenses
+        window.location.href = `./expense_change.html?id=${user_id}&item_id=${item_id}`
     })
 }
 
 const showExpenseData = () => {
-    axios.get('http://localhost:4040/api/getExpense')
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
+    axios.get(`http://localhost:4040/api/getExpense/${urlId}`)
         .then(res => {
             // console.log('main.js expense.RES.data is: ', res.data)
             res.data.forEach(createExpenseCard)
@@ -207,7 +225,10 @@ const createExpenseTotalCard = (expenseData) => {
 }
 
 const showIncomeTotal = () => {
-    axios.get(`http://localhost:4040/api/getIncomeTotal`)
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
+    axios.get(`http://localhost:4040/api/getIncomeTotal/${urlId}`)
         .then(res => {
             // console.log("Income Total is: ", res.data)
             createIncomeTotalCard(res.data)
@@ -215,7 +236,10 @@ const showIncomeTotal = () => {
 }
 
 const showExpenseTotal = () => {
-    axios.get(`http://localhost:4040/api/getExpenseTotal`)
+    const urlParams = new URLSearchParams(window.location.search)
+    const urlId = urlParams.get('id')
+    // console.log("ID of logged in user is : ", urlId)
+    axios.get(`http://localhost:4040/api/getExpenseTotal/${urlId}`)
         .then(res => {
             createExpenseTotalCard(res.data)
             // console.log("Expense Total is: ", res.data)
