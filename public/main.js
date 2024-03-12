@@ -137,7 +137,10 @@ const createExpenseCard = expenseData => {
 
     let expenseDueDate = document.createElement('div')
     expenseDueDate.classList += 'expense-card-date'
-    expenseDueDate.textContent = (`Due date is: ${expenseData.due_date}`)       // !!!!! format this date later
+    const dueDate = new Date(expenseData.due_date)
+    const formatMonth = { month: 'long'}
+    let formattedDueDate = `${dueDate.toLocaleDateString('en-US', formatMonth)} ${dueDate.getDate()}`
+    expenseDueDate.textContent = (`Due ➡️ ${formattedDueDate}`)    
 
     let expenseOptions = document.createElement('div')
     expenseOptions.classList += 'expense-options'

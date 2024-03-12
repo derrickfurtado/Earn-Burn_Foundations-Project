@@ -17,7 +17,6 @@ const createNewAccount = (event) => {// create function that will make request
     axios.post('http://localhost:4040/api/register', newAccount)
         .then(res => {
             console.log(res.data)
-            alert("Successfully registered new Account. Now log in with your credentials")
             window.location.href='./index.html'
         })
         .catch(err => console.log(err))
