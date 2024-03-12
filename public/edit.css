@@ -4,9 +4,9 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-
     background-image: url('https://images.unsplash.com/photo-1529528744093-6f8abeee511d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
     background-size: cover;
+    background-color: black;
 }
 
 body {
@@ -15,7 +15,6 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: large;
-
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -24,25 +23,15 @@ body {
     min-height: 100åvh;
     width: 100%;
     box-sizing: border-box;
-
     padding: 10px;
-
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
 }
 
 section {
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
     height: 30%;
     width: 50%;
-
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
@@ -51,7 +40,6 @@ section {
 #income_change, #expense_change {
     display: flex;
     flex-direction: column;
-    
     width: 45%;
 
 }
@@ -59,6 +47,15 @@ section {
 #newIncomeData, #newIncomeSource, button, #newExpenseData, #newExpenseSource {
     margin: 5px;
     padding: 5px;
+}
+
+#newIncomeData, #newIncomeSource, #newExpenseData, #newExpenseSource, #newDueDate {
+    padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.863);
+    border-width: 5px;
+    background-color:rgb(255, 255, 255);
 }
 
 label {
@@ -69,4 +66,11 @@ label {
 #newDueDate {
     display: flex;
     justify-content: center;
+}
+
+button {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgb(138, 42, 42);
+    color: antiquewhite;
 }

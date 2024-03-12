@@ -65,7 +65,11 @@ const createIncomeCard = incomeData => {
 
     let cardAmount = document.createElement('div')
     cardAmount.classList += 'income-card-amount'
-    cardAmount.textContent = `$ ${incomeData.total_income}`
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(incomeData.total_income)
+    cardAmount.textContent = `${formattedNum}`
 
     let cardOptions = document.createElement('div')
     cardOptions.classList += 'income-options'
@@ -82,6 +86,7 @@ const createIncomeCard = incomeData => {
     cardEdit.id = 'income-edit-btn'
 
     let cardName = document.createElement('h4')
+    cardName.classList += 'income-card-name'
     cardName.textContent = incomeData.source_income
 
     incomeCard.appendChild(cardName)
@@ -120,7 +125,11 @@ const createExpenseCard = expenseData => {
 
     let expenseAmount = document.createElement('div')
     expenseAmount.classList += 'expense-card-amount'
-    expenseAmount.textContent = `$ ${expenseData.total_expense}`
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(expenseData.total_expense)
+    expenseAmount.textContent = `${formattedNum}`
 
     let expenseName = document.createElement('h4')
     expenseName.classList += 'expense-card-name'
@@ -206,7 +215,6 @@ const deleteExpense = (id) => {
 const updateStatus = (id) => {
     axios.put(`http://localhost:4040/api/changePaidStatus/${id}`)
         .then(res => {
-            alert("Paid Status has been updated")
             window.location.reload()
             }).catch(err => console.log(err))
 }
@@ -215,7 +223,11 @@ const createIncomeTotalCard = (incomeData) => {
     let incomeTotalCard = document.createElement('div')
     incomeTotalCard.classList = "sumOfIncome"
     let iData = incomeData.sum === null ? 0 : incomeData.sum            // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
-    incomeTotalCard.textContent = `$ ${iData}`
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(iData)
+    incomeTotalCard.textContent = `${formattedNum}`
 
     incomeTotalSection.append(incomeTotalCard)
 }
@@ -224,7 +236,11 @@ const createExpenseTotalCard = (expenseData) => {
     let expenseTotalCard = document.createElement('div')
     expenseTotalCard.classList = "sumOfExpenses"
     let iData = expenseData.sum === null ? 0 : expenseData.sum          // added in case the total is NULL and shows $0 instead. Also needed to pull out the .sum
-    expenseTotalCard.textContent = (`$ ${iData}`)
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(iData)
+    expenseTotalCard.textContent = (`${formattedNum}`)
 
     expenseTotalSection.append(expenseTotalCard)
 }
@@ -255,8 +271,11 @@ const createRunwayCard = (runwayData) => {
     let runwayCard = document.createElement('div')
     runwayCard.classList = "runwayData"
     let iData = runwayData[0] === null ? 0 : runwayData[0]
-    // console.log(iData)
-    runwayCard.textContent = (`$ ${iData.toFixed(2)}`)
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(iData)
+    runwayCard.textContent = (`${formattedNum}`)
 
     runwaySection.append(runwayCard)
 }
@@ -265,7 +284,11 @@ const createUnpaidDebtCard = (debtData) => {
     let debtCard = document.createElement('div')
     debtCard.classList = "unPaidDebtData"
     let iData = +debtData[0].sum === null ? 0 : +debtData[0].sum
-    debtCard.textContent = (`$ ${iData.toFixed(2)}`)
+    let formattedNum = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(iData)
+    debtCard.textContent = (`${formattedNum}`)
 
     unpaidDebtSection.append(debtCard)
 }

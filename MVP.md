@@ -7,15 +7,15 @@ Top 3 MVP needs:
 
 Secondary MVP needs:
 
-1. User can view analytics of data entered
-2. User can sign out of account and return to login screen
-3. All MVP needs have to be user-dependent
+1. ✅ User can view analytics of data entered
+2. ✅ User can sign out of account and return to login screen
+3. ✅ All MVP needs have to be user-dependent
 
 Tertiary MVP needs:
 
-1. User can update password
-2. User data resets every calendar month
-3. All historical data can be referrenced using links to other pages
+1. 🚧 User can update password
+2. 🚧 User data resets every calendar month
+3. 🚧 All historical data can be referrenced using links to other pages
 
 
 PROCESS:
@@ -37,9 +37,9 @@ PROCESS:
         - Debt-to-Income Ratio
         - % remaining in budget
         - % spent of budget
-        - Current Earn
-        - Current Burn
-        - Remaining Budget
-        - Remaining Unpaid
-        - Wiggle Room
+        - ✅ Current Earn
+        - ✅ Current Burn
+        - ✅ Remaining Budget
+        - ✅ Remaining Unpaid
+        - ✅ Wiggle Room
     - Style Analytics page

@@ -4,10 +4,10 @@ html, body {
     height: 100%;
     margin: 0;
     padding: 0;
-
+    background-color: black;
     background-image: url("https://images.unsplash.com/photo-1615250068983-3188832dfefc?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
-
     background-size: cover;
+    background-attachment: fixed;
 }
 
 body {
@@ -16,21 +16,13 @@ body {
     font-weight: 400;
     font-style: normal;
     font-size: large;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-   
-
     min-height: 100vh;
     width: 100%;
     box-sizing: border-box;
-
     padding: 10px;
-
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
 }
 
 header {
@@ -41,51 +33,58 @@ header {
     margin-bottom: 30px;
     padding-left: 10px;
     padding-right: 10px;
-    
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     width: 80%;
-
- 
     color: antiquewhite;
-
-
     background-color: rgba(0, 0, 0, 0.42);
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
-    padding: 5px;
+    padding: 10px;
+    border-radius: 30px;
 }
 
 #nav-links {
     display: flex;
     width: 130px;
     justify-content: space-between;
-    
-    
 }
 
 #main-forms {
     background-color: rgba(0, 0, 0, 0.365);
-    padding: 10px;
+    padding: 15px;
     border-radius: 30px;
     margin-bottom: 30px;
-
     box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
 
 #containers {
     margin-bottom: 30px;
 }
+
 #main-forms, #containers, #analytics, #analytics-2{
     display: flex;
     justify-content: space-between;
     width: 90%;
     color: antiquewhite;
+}
 
+#incomeData, #expenseData, #incomeSourceData, #expenseName {
+    padding: 5px;
+    border-radius: 5px;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.863);
+    border-width: 5px;
+    background-color:rgb(255, 255, 255);
+}
+
+.income-card-name, .expense-card-name {
+    color: rgba(18, 146, 237, 0.888);
+}
+
+#incomeSection h2, #expenseSection h2 {
+    font-size: 33px;
 }
 
 #expenseSection, #incomeSection, #incomeContainer, #expenseContainer{
@@ -122,7 +121,6 @@ h2 {
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
-
     box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
 
@@ -134,18 +132,12 @@ h2 {
     margin: 15px;
     border-radius: 20px;
     padding: 10px;
-
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
 }
 
 #income-div, #expense-div, #runway, #unpaid-debt {
-  
     background-color: rgba(0, 0, 0, 0.365);
     padding: 10px;
     border-radius: 30px;
-
     box-shadow: 18px 28px 41px -3px rgba(0,0,0,0.75);
 }
 
@@ -155,10 +147,6 @@ h2 {
     align-items: center;
     padding: 10px;
     margin: 5px;
-
-    border-color: black;
-    border-style: solid;
-    border-width: 1px;
     background-color: rgba(0, 0, 0, 0.728);
     border-radius: 30px;
     padding: 15px;
@@ -166,6 +154,13 @@ h2 {
 
 .expense-card-name, .expense-card-date, .delete-btn, .edit-btn, .paid-btn {
     margin: 3px;
+}
+
+.delete-btn, .edit-btn, .paid-btn, #incomeDataForm button, #addExpenseData button {
+    padding: 10px;
+    border-radius: 30px;
+    background-color: rgb(138, 42, 42);
+    color: antiquewhite;
 }
 
 .expense-card-amount, .income-card-amount{
@@ -184,3 +179,5 @@ h2 {
 #incomeContainer h3 {
     font-size: 33px;
 }
+
+

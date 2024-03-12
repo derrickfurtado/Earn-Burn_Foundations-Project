@@ -22,7 +22,6 @@ const adjustIncomeData = (event) => {
     }
     axios.put(`http://localhost:4040/api/changeIncome`, adjustedIncomeData)
         .then(
-            alert(`Income has been updated`),
             window.location.href = `./main.html?id=${user_id}`
         )
 }

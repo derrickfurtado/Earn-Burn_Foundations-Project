@@ -22,7 +22,6 @@ const adjustExpenseData = (event) => {
 
     axios.put(`http://localhost:4040/api/changeExpense`, adjustedExpenseData)
         .then(
-            alert(`Expense has been updated`),
             window.location.href = `./main.html?id=${user_id}`
         ).catch(err => console.log(err))
 }
