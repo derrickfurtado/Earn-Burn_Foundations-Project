@@ -44,11 +44,11 @@ FRONT END INSTRUCTIONS:
 
 Some of the trickier implementations:
 1. The login process is not very secure and susceptible to SQL injection. Using Jscript, I was able to keep all the data entry and queries user-dependent. This was interesting as it was a datapoint I could shift between pages and use as necessary.
-!([alt text]https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/loginQuery.png "login query screentshot")
+![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/loginQuery.png "login query screentshot")
 2. The PAID status feature changes the status on the backend, but I haven't figured a way to indicate it on the button itself. I could have the function change the button, but I fear that reloading the page will simply reset the screen. I will probably need to have an active listener to check the backend boolean and populate the correct button that matches the status. Ran out of time to implement this, but it will look good.
-!([alt text]https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/statusQuery.png "paid status query screentshot")
+![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/statusQuery.png "paid status query screentshot")
 3. Calculating runway was tricky. I needed to pull the SUM of two different fields in two different lists in the same function. Turns out I can have two queries, one before the .then and one after to capture two different variables (dbRes & dbRes2) and do the calculation in the controller.js file.
-!([alt text]https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/runwayQuery.png "runway query screenshot")
+![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/runwayQuery.png "runway query screenshot")
 
 
 Learning Experience:
