@@ -20,6 +20,7 @@ RHYME AND REASON: I built this project as a reflection of what I needed to be aw
 
 ** My spreadsheet is really dope though **
 
+[See it in Action (2.5 mins)](https://www.loom.com/share/83a8a0c49308483396445cebe7f4ae51?sid=e8816725-972c-44b6-804d-2040df78ed88)
 
 FRONT END INSTRUCTIONS:
 
@@ -41,8 +42,14 @@ FRONT END INSTRUCTIONS:
 7. Edit or Delete items as necessary and reporting will reflect
 8. Click PAID to change the status of each expense and the Unpaid Debt analysis will reflect accordingly.
 
-BACK END LOGIC:
-1. The login process is not very secure and susceptible to SQL injection. Using Jscript, I was able to keep all the data entry and queries user-dependent
+Some of the trickier implementations:
+1. The login process is not very secure and susceptible to SQL injection. Using Jscript, I was able to keep all the data entry and queries user-dependent. This was interesting as it was a datapoint I could shift between pages and use as necessary.
+🚨 INSERT IMAGE 🚨
+2. The PAID status feature changes the status on the backend, but I haven't figured a way to indicate it on the button itself. I could have the function change the button, but I fear that reloading the page will simply reset the screen. I will probably need to have an active listener to check the backend boolean and populate the correct button that matches the status. Ran out of time to implement this, but it will look good.
+🚨 INSERT IMAGE 🚨
+3. Calculating runway was tricky. I needed to pull the SUM of two different fields in two different lists in the same function. Turns out I can have two queries, one before the .then and one after to capture two different variables (dbRes & dbRes2) and do the calculation in the controller.js file.
+🚨 INSERT IMAGE 🚨
+
 
 Learning Experience:
 1. During the first half of this bootcamp, I've struggled with completely understanding callback functions and PostgreSQL queries and how they interact with the front end. This project allowed me to hammer in these endpoints over and over again until I better understand them.
@@ -50,36 +57,8 @@ Learning Experience:
 3. It got really fun once the CSS styling was up. I could really drill into each feature and refine the look, feel, and functionality of them to fit the overall goal.
 
 NEXT FOCUS:
-1. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+1. More API integration.
+2. Deeper back-end functionality and focus.
 
 
 
@@ -131,4 +110,4 @@ PROCESS:
         - ✅ Remaining Budget
         - ✅ Remaining Unpaid
         - ✅ Wiggle Room
-    - Style Analytics page
+    - 🚧 Style Analytics page

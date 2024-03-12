@@ -17,12 +17,11 @@ module.exports = {
 
     loginUser: (req, res) => {
         const { name, password } = req.body
-        // console.log(password)                                        // CHECK - query will only return result if the username is found
         sequelize.query(`
             SELECT id, name, password FROM users
             WHERE name = '${name}';                         
         `).then(dbRes => {
-            // console.log(dbRes[0][0].password)
+
             if (password === dbRes[0][0].password) {                     // CHECK - if username is present, this checks if the password matches 
                 res.status(200).send(dbRes[0])                          // if it matches, it sends back that username and password, only.
             } else {
