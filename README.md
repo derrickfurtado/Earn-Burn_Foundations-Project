@@ -1,11 +1,6 @@
 
 
-
-Earn & Burn:
-
-
-
-INTRODUCTION: This is a monthly financial planner. The purpose of this project is to enable a user to easily input and edit simple personal financial data and get a quick snapshot of their financial position so the user can make well-informed decisions when planning their month. This is a full-stack application built with the following technology and libraries:
+INTRODUCTION: This is a monthly financial planner, named Earn and Burn. The purpose of this project is to enable a user to easily input and edit simple personal financial data and get a quick snapshot of their financial position so the user can make well-informed decisions when planning their month. This is a full-stack application built with the following technology and libraries:
 
 - HTML
 - CSS
@@ -43,18 +38,17 @@ FRONT END INSTRUCTIONS:
 8. Click PAID to change the status of each expense and the Unpaid Debt analysis will reflect accordingly.
 
 Some of the trickier implementations:
-1. The login process is not very secure and susceptible to SQL injection. Using Jscript, I was able to keep all the data entry and queries user-dependent. This was interesting as it was a datapoint I could shift between pages and use as necessary.
+1. The login process is not very secure and susceptible to SQL injection. I have built in room in the data table for 128-bit encryption for storing hashed passwords. Using Jscript, I was able to keep all the data entry and queries user-dependent. This was interesting as it was a datapoint I could shift between pages and use as necessary. 
 ![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/loginQuery.png "login query screentshot")
-2. The PAID status feature changes the status on the backend, but I haven't figured a way to indicate it on the button itself. I could have the function change the button, but I fear that reloading the page will simply reset the screen. I will probably need to have an active listener to check the backend boolean and populate the correct button that matches the status. Ran out of time to implement this, but it will look good.
+2. The PAID status feature changes the status on the backend, but I haven't figured a way to indicate it on the button itself. I could have the function change the button, but I fear that reloading the page will simply reset the element. I will probably need to have an active listener to check the backend boolean and populate the correct button that matches the status. Ran out of time to implement this, but it will look good.
 ![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/statusQuery.png "paid status query screentshot")
 3. Calculating runway was tricky. I needed to pull the SUM of two different fields in two different lists in the same function. Turns out I can have two queries, one before the .then and one after to capture two different variables (dbRes & dbRes2) and do the calculation in the controller.js file.
 ![alt text](https://github.com/DROCK707/Earn-Burn_Foundations-Project/blob/main/screenshots/runwayQuery.png "runway query screenshot")
 
-
 Learning Experience:
 1. During the first half of this bootcamp, I've struggled with completely understanding callback functions and PostgreSQL queries and how they interact with the front end. This project allowed me to hammer in these endpoints over and over again until I better understand them.
 2. I couldn't point out a particularly hard aspect of this build, but what I can say is that the difficult spots kept coming throughout the build. I started with the framework of each file and slowly built in features. Some features would be more challenging than others, but "walking the path" for each one helps me understand what to pivot to next.
-3. It got really fun once the CSS styling was up. I could really drill into each feature and refine the look, feel, and functionality of them to fit the overall goal.
+3. It got really fun once the CSS styling was up. I could really drill into each feature and refine the look, feel, and functionality of them to fit the overall goal. Could easily dive into the rabbit hole on new features.
 
 NEXT FOCUS:
 1. More API integration.
@@ -100,14 +94,22 @@ PROCESS:
 3. Once all Top MVP features are built, build in styling.
     - ✅ Style Login page
     - ✅ style main page
-4. 🚧 Once styling is done, build Analytics page.
+4. 🚧 Once styling is done, build Analytics page.       // scope reduced due to time constraint
     - 🚧 Build sections for each
         - 🚧 Debt-to-Income Ratio
         - 🚧 % remaining in budget
         - 🚧 % spent of budget
+        - 🚧 Format PAID button to indicate appropriate backend boolean status for expenses.paid_status
         - ✅ Current Earn
         - ✅ Current Burn
         - ✅ Remaining Budget
         - ✅ Remaining Unpaid
         - ✅ Wiggle Room
     - 🚧 Style Analytics page
+5. FUTURE STATE:
+    - Capture more user data around demographics (age, gender, career field, years of experience) for use with APIs
+    - API integration with something that displays ranking among others in the same demographic
+        - EX: "of those in your age group and career field, you rank among the top 5% in terms of ... Debt-to-Income ratio
+    - Hash password entries
+    - Build more secure login procedure
+    
